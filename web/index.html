@@ -40,7 +40,7 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   <script src="splash/splash.js"></script>
 </head>
-<body>                                  
+<body>
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -55,6 +55,22 @@
       });
     });
   </script>
+  <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js"></script>
+ <script>
 
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyB4GICsRAcmHUkrYGHDGyzaOuyYFP58K-4",
+    authDomain: "todo-app-26289.firebaseapp.com",
+    projectId: "todo-app-26289",
+    storageBucket: "todo-app-26289.appspot.com",
+    messagingSenderId: "36838278918",
+    appId: "1:36838278918:web:9fa2014a35afc078278087",
+    measurementId: "G-0MYH1MN5H7"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  </script>
 
 </body></html>

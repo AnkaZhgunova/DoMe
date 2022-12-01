@@ -42,3 +42,12 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+*.freezed.dart
+*.g.dart
+*.gr.dart
+pubspec.lock
+ios/Podfile.lock
+node_modules
+.firebase
+package-lock.json

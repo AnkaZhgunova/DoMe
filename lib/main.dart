@@ -9,7 +9,14 @@ import 'core/injector.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: 'AIzaSyB4GICsRAcmHUkrYGHDGyzaOuyYFP58K-4',
+      appId: '1:36838278918:web:9fa2014a35afc078278087',
+      messagingSenderId: 'G-0MYH1MN5H7',
+      projectId: 'todo-app-26289',
+    ),
+  );
   Injector().init();
   runApp(const MyApp());
 }
