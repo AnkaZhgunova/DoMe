@@ -10,6 +10,7 @@ import 'package:todo_app/ui_kit/style/export.dart';
 import 'package:todo_app/ui_kit/widgets/export.dart';
 
 class HomePage extends StatefulWidget {
+  static String routeName = '/';
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -31,9 +32,7 @@ class _HomePageState extends State<HomePage> {
       onWillPop: () async => false,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: selectedIndex == 0
-            ? TodoColors.bgLightGrey
-            : TodoColors.bgLightPink,
+        backgroundColor: selectedIndex == 0 ? TodoColors.bgLightGrey : TodoColors.bgLightPink,
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: TodoColors.bgWhite,
           selectedItemColor: TodoColors.purple,
@@ -87,10 +86,8 @@ class _HomePageState extends State<HomePage> {
                   final todos = snapshot.data;
 
                   bloc.setTodos(todos!);
-                  final List<Todo> currentTodos =
-                      todos.where((todo) => !todo.isDone).toList();
-                  final List<Todo> completedTodos =
-                      todos.where((todo) => todo.isDone).toList();
+                  final List<Todo> currentTodos = todos.where((todo) => !todo.isDone).toList();
+                  final List<Todo> completedTodos = todos.where((todo) => todo.isDone).toList();
                   final tabs = [
                     TodosList(
                       todos: currentTodos,
@@ -110,17 +107,17 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(20),
           ),
           backgroundColor: TodoColors.purple,
-          child: SvgPicture.asset(
-            TodoIcons.add,
+          child: Icon(
+            Icons.add,
             color: TodoColors.bgLightPink,
+            size: 30,
           ),
           onPressed: () {
             TodoDialogs.showMCDialog(
               context: context,
               child: Form(
                 key: _formKey,
-                onChanged: () =>
-                    isFormValidate.value = _formKey.currentState!.validate(),
+                onChanged: () => isFormValidate.value = _formKey.currentState!.validate(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                   child: SingleChildScrollView(
@@ -169,8 +166,7 @@ class _HomePageState extends State<HomePage> {
                                       bloc
                                           .submit(
                                             title: titleController.text,
-                                            description:
-                                                descriptionController.text,
+                                            description: descriptionController.text,
                                           )
                                           .whenComplete(
                                             () => Navigator.pop(context),

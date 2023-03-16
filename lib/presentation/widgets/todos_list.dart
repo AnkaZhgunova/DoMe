@@ -21,6 +21,8 @@ class TodosList extends StatelessWidget {
               vertical: 70,
             ),
             itemBuilder: (context, int index) {
+              todos.sort((a, b) => a.createAt.compareTo(b.createAt));
+
               return TodoCard(
                 todo: todos[index],
               );

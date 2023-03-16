@@ -33,20 +33,13 @@ mixin _$Todo {
 
 /// @nodoc
 abstract class $TodoCopyWith<$Res> {
-  factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
-      _$TodoCopyWithImpl<$Res, Todo>;
+  factory $TodoCopyWith(Todo value, $Res Function(Todo) then) = _$TodoCopyWithImpl<$Res, Todo>;
   @useResult
-  $Res call(
-      {DateTime createAt,
-      String title,
-      bool isDone,
-      String? id,
-      String? description});
+  $Res call({DateTime createAt, String title, bool isDone, String? id, String? description});
 }
 
 /// @nodoc
-class _$TodoCopyWithImpl<$Res, $Val extends Todo>
-    implements $TodoCopyWith<$Res> {
+class _$TodoCopyWithImpl<$Res, $Val extends Todo> implements $TodoCopyWith<$Res> {
   _$TodoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -94,19 +87,13 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
       __$$_TodoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DateTime createAt,
-      String title,
-      bool isDone,
-      String? id,
-      String? description});
+  $Res call({DateTime createAt, String title, bool isDone, String? id, String? description});
 }
 
 /// @nodoc
 class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res, _$_Todo>
     implements _$$_TodoCopyWith<$Res> {
-  __$$_TodoCopyWithImpl(_$_Todo _value, $Res Function(_$_Todo) _then)
-      : super(_value, _then);
+  __$$_TodoCopyWithImpl(_$_Todo _value, $Res Function(_$_Todo) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -175,25 +162,21 @@ class _$_Todo implements _Todo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Todo &&
-            (identical(other.createAt, createAt) ||
-                other.createAt == createAt) &&
+            (identical(other.createAt, createAt) || other.createAt == createAt) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.isDone, isDone) || other.isDone == isDone) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.description, description) || other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, createAt, title, isDone, id, description);
+  int get hashCode => Object.hash(runtimeType, createAt, title, isDone, id, description);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TodoCopyWith<_$_Todo> get copyWith =>
-      __$$_TodoCopyWithImpl<_$_Todo>(this, _$identity);
+  _$$_TodoCopyWith<_$_Todo> get copyWith => __$$_TodoCopyWithImpl<_$_Todo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {

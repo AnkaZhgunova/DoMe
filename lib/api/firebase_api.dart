@@ -21,8 +21,7 @@ class FirebaseApi {
       .transform(Transformer.transformer(Todo.fromJson).cast());
 
   Future<void> updateTodo(Todo todo) async {
-    final todoCollection =
-        FirebaseFirestore.instance.collection('todo').doc(todo.id);
+    final todoCollection = FirebaseFirestore.instance.collection('todo').doc(todo.id);
 
     await todoCollection.update(todo.toJson());
   }

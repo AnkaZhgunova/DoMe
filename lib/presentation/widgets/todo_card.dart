@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -6,6 +7,7 @@ import 'package:todo_app/bloc/todo_bloc.dart';
 import 'package:todo_app/model/todo.dart';
 import 'package:todo_app/presentation/export.dart';
 import 'package:todo_app/ui_kit/style/export.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TodoCard extends StatelessWidget {
   final Todo todo;
@@ -111,9 +113,10 @@ class TodoCard extends StatelessWidget {
                   if (todo.description != null && todo.description!.isNotEmpty)
                     Padding(
                       padding: EdgeInsets.only(top: 4),
-                      child: Text(
-                        todo.description!,
-                        style: TodoTextStyle.darkPurple16Normal400,
+                      child: SelectableText.rich(
+                        TextSpan(
+                          children: recognizeText(todo.description!),
+                        ),
                       ),
                     ),
                 ],
@@ -123,5 +126,51 @@ class TodoCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<TextSpan> recognizeText(String todoDescription) {
+    final List<TextSpan> textSpan = [];
+
+    final urlRegExp = RegExp(
+      r'((https?:www\.)|(https?:\/\/)|(www\.))[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9]{1,6}(\/[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)?',
+    );
+
+    String getLink(String linkString) {
+      textSpan.add(
+        TextSpan(
+          text: linkString,
+          style: TodoTextStyle.darkPurple16Normal400.copyWith(color: TodoColors.violet),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () async {
+              if (await canLaunchUrl(Uri.parse(linkString))) {
+                await launchUrl(
+                  Uri.parse(linkString),
+                );
+              }
+            },
+        ),
+      );
+
+      return linkString;
+    }
+
+    String getNormalText(String normalText) {
+      textSpan.add(
+        TextSpan(
+          text: normalText,
+          style: TodoTextStyle.darkPurple16Normal400,
+        ),
+      );
+
+      return normalText;
+    }
+
+    todoDescription.splitMapJoin(
+      urlRegExp,
+      onMatch: (m) => getLink('${m.group(0)}'),
+      onNonMatch: (n) => getNormalText(n.substring(0)),
+    );
+
+    return textSpan;
   }
 }

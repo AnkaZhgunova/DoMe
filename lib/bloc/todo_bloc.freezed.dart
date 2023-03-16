@@ -75,8 +75,7 @@ abstract class $TodoStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TodoStateCopyWithImpl<$Res, $Val extends TodoState>
-    implements $TodoStateCopyWith<$Res> {
+class _$TodoStateCopyWithImpl<$Res, $Val extends TodoState> implements $TodoStateCopyWith<$Res> {
   _$TodoStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -201,17 +200,14 @@ abstract class TodoStateInitial implements TodoState {
 
 /// @nodoc
 abstract class _$$TodoStateErrorCopyWith<$Res> {
-  factory _$$TodoStateErrorCopyWith(
-          _$TodoStateError value, $Res Function(_$TodoStateError) then) =
+  factory _$$TodoStateErrorCopyWith(_$TodoStateError value, $Res Function(_$TodoStateError) then) =
       __$$TodoStateErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$TodoStateErrorCopyWithImpl<$Res>
-    extends _$TodoStateCopyWithImpl<$Res, _$TodoStateError>
+class __$$TodoStateErrorCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res, _$TodoStateError>
     implements _$$TodoStateErrorCopyWith<$Res> {
-  __$$TodoStateErrorCopyWithImpl(
-      _$TodoStateError _value, $Res Function(_$TodoStateError) _then)
+  __$$TodoStateErrorCopyWithImpl(_$TodoStateError _value, $Res Function(_$TodoStateError) _then)
       : super(_value, _then);
 }
 
@@ -602,8 +598,7 @@ abstract class $TodoEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TodoEventCopyWithImpl<$Res, $Val extends TodoEvent>
-    implements $TodoEventCopyWith<$Res> {
+class _$TodoEventCopyWithImpl<$Res, $Val extends TodoEvent> implements $TodoEventCopyWith<$Res> {
   _$TodoEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -728,17 +723,14 @@ abstract class TodoEventInitial implements TodoEvent {
 
 /// @nodoc
 abstract class _$$TodoEventErrorCopyWith<$Res> {
-  factory _$$TodoEventErrorCopyWith(
-          _$TodoEventError value, $Res Function(_$TodoEventError) then) =
+  factory _$$TodoEventErrorCopyWith(_$TodoEventError value, $Res Function(_$TodoEventError) then) =
       __$$TodoEventErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$TodoEventErrorCopyWithImpl<$Res>
-    extends _$TodoEventCopyWithImpl<$Res, _$TodoEventError>
+class __$$TodoEventErrorCopyWithImpl<$Res> extends _$TodoEventCopyWithImpl<$Res, _$TodoEventError>
     implements _$$TodoEventErrorCopyWith<$Res> {
-  __$$TodoEventErrorCopyWithImpl(
-      _$TodoEventError _value, $Res Function(_$TodoEventError) _then)
+  __$$TodoEventErrorCopyWithImpl(_$TodoEventError _value, $Res Function(_$TodoEventError) _then)
       : super(_value, _then);
 }
 

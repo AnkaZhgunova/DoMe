@@ -56,84 +56,81 @@ class _EditTodoState extends State<EditTodo> {
               backgroundColor: TodoColors.bgLightGrey,
               body: Form(
                 key: _formKey,
-                onChanged: () =>
-                    isFormValidate.value = _formKey.currentState!.validate(),
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: IconButton(
-                            padding: EdgeInsets.zero,
-                            alignment: Alignment.bottomLeft,
-                            onPressed: () => Navigator.pop(context),
-                            icon: SvgPicture.asset(
-                              TodoIcons.back,
-                              color: TodoColors.darkPurple,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TodoTextField(
-                          title: 'Title',
-                          textEditingController: titleController,
-                          onChanged: (_) {},
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Field must not to be empty';
-                            }
-
-                            return null;
-                          },
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TodoTextField(
-                          title: 'Description',
-                          textEditingController: descriptionController,
-                          inputType: TextInputType.multiline,
-                          maxLines: null,
-                          onChanged: (_) {},
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        ValueListenableBuilder(
-                          valueListenable: isFormValidate,
-                          builder: (
-                            BuildContext context,
-                            bool value,
-                            Widget? child,
-                          ) {
-                            return TodoButton(
-                              buttonText: 'Save',
-                              buttonType: ButtonType.purple,
-                              onTap: value
-                                  ? () {
-                                      BlocProvider.of<TodoBloc>(context)
-                                          .updateTodo(
-                                        title: titleController.text.trim(),
-                                        description:
-                                            descriptionController.text.trim(),
-                                        localTodo: widget.todo,
-                                      );
-                                      Navigator.of(context).pop();
-                                    }
-                                  : null,
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                onChanged: () => isFormValidate.value = _formKey.currentState!.validate(),
+                child: ListView(
+                  padding: EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                    bottom: MediaQuery.of(context).viewInsets.bottom,
                   ),
+                  children: [
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        alignment: Alignment.bottomLeft,
+                        onPressed: () => Navigator.pop(context),
+                        icon: SvgPicture.asset(
+                          TodoIcons.back,
+                          color: TodoColors.darkPurple,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TodoTextField(
+                      title: 'Title',
+                      textEditingController: titleController,
+                      onChanged: (_) {},
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Field must not to be empty';
+                        }
+
+                        return null;
+                      },
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TodoTextField(
+                      title: 'Description',
+                      textEditingController: descriptionController,
+                      inputType: TextInputType.multiline,
+                      maxLines: null,
+                      onChanged: (_) {},
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    ValueListenableBuilder(
+                      valueListenable: isFormValidate,
+                      builder: (
+                        BuildContext context,
+                        bool value,
+                        Widget? child,
+                      ) {
+                        return TodoButton(
+                          buttonText: 'Save',
+                          buttonType: ButtonType.purple,
+                          onTap: value
+                              ? () {
+                                  BlocProvider.of<TodoBloc>(context).updateTodo(
+                                    title: titleController.text.trim(),
+                                    description: descriptionController.text.trim(),
+                                    localTodo: widget.todo,
+                                  );
+                                  Navigator.of(context).pop();
+                                }
+                              : null,
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             );
